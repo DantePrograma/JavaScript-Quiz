@@ -25,7 +25,7 @@ export const useQuestions = create<State>()(
         currentQuestion: 0,
 
         fetchQuestions: async (limit: number) => {
-          const res = await fetch(`${API_URL}/public/data.json`);
+          const res = await fetch(`${API_URL}/data.json`);
           const json = await res.json();
 
           const questions = json
