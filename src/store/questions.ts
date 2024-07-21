@@ -13,6 +13,10 @@ interface State {
   resetGame: () => void;
 }
 
+const API_URL = import.meta.env.PROD
+  ? "https://javascript-quiz-six.vercel.app"
+  : "http://localhost:5173";
+
 export const useQuestions = create<State>()(
   persist(
     (set, get) => {
@@ -21,7 +25,7 @@ export const useQuestions = create<State>()(
         currentQuestion: 0,
 
         fetchQuestions: async (limit: number) => {
-          const res = await fetch("http://localhost:5173/data.json");
+          const res = await fetch(`${API_URL}/public/data.json`);
           const json = await res.json();
 
           const questions = json
